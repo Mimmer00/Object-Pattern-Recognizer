@@ -113,7 +113,7 @@ def detect_shapes_and_colors(image_path):
             cv2.drawContours(mask, [cnt], -1, 255, -1)
             color = get_color(hsv, mask)
             x, y, w, h = cv2.boundingRect(cnt)
-            cv2.putText(image, f'{color} {shape}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
+            cv2.putText(image, f'{color} {shape}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
             cv2.drawContours(image, [cnt], -1, (0, 255, 0), 2)
     
     plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
