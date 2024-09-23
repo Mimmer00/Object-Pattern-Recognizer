@@ -120,5 +120,5 @@ def detect_shapes_and_colors(image_path):
     plt.axis('off')
     plt.show()
     
-image_path = 'image_1.png'
-detect_shapes_and_colors(image_path)
+#image_path = 'image_1.png'
+#detect_shapes_and_colors(image_path)
