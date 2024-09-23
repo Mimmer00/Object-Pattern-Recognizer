@@ -31,8 +31,6 @@ def open_webcam():
         if cv2.waitKey(1) & 0xFF == ord('q'):  # Press 'q' to quit the live video
             break
 
-    update_frame()
-
 # Create Tkinter window
 app = tk.Tk()
 app.title("Shape and Color Detection")
