@@ -79,8 +79,8 @@ def get_color(hsv_image, mask):
     mean_val = cv2.mean(hsv_image, mask=mask)
     hue, sat, _ = mean_val[:3]
     if sat < 40:
-        return "Unclear"
-    elif hue < 10 or (hue > 150 and hue < 190):
+        return "Sat to low"
+    elif hue < 15 or (hue > 160 and hue < 190):
         return "Red"
     elif hue >= 15 and hue < 45:
         return "Yellow"
@@ -90,7 +90,7 @@ def get_color(hsv_image, mask):
         return "Blue"
     elif hue >= 130 and hue < 160:
         return "Violet"
-    return "Unclear"
+    return "Not found"
 
 def detect_shapes_and_colors(image_path):
     """
