@@ -80,15 +80,15 @@ def get_color(hsv_image, mask):
     hue, sat, _ = mean_val[:3]
     if sat < 40:
         return "Sat to low"
-    elif hue < 15 or (hue > 160 and hue < 190):
+    elif hue < 15 or (hue > 190 and hue < 360): 
         return "Red"
     elif hue >= 15 and hue < 45:
         return "Yellow"
     elif hue >= 45 and hue < 70:
         return "Green"
-    elif hue >= 70 and hue < 125:
+    elif hue >= 70 and hue < 130:
         return "Blue"
-    elif hue >= 130 and hue < 160:
+    elif hue >= 130 and hue < 190:
         return "Violet"
     return "Not found"
 
