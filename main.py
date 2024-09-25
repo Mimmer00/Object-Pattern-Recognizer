@@ -92,7 +92,7 @@ def get_color(hsv_image, mask):
         return "Violet"
     return "Not found"
 
-def detect_shapes_and_colors(image_path):
+def detect_shapes_and_colors_from_image(image_path):
     """
     Load an image, detect shapes and their colors, and display the result with annotations.
     
@@ -113,12 +113,34 @@ def detect_shapes_and_colors(image_path):
             cv2.drawContours(mask, [cnt], -1, 255, -1)
             color = get_color(hsv, mask)
             x, y, w, h = cv2.boundingRect(cnt)
-            cv2.putText(image, f'{color} {shape}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
+            cv2.putText(image, f'{color} {shape}', (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
             cv2.drawContours(image, [cnt], -1, (0, 255, 0), 2)
     
     plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
     plt.axis('off')
     plt.show()
+
+def detect_shapes_and_colors_from_webcam(frame):
+    """
+    Detect shapes and their colors from a frame (e.g., webcam input).
     
-#image_path = 'image_1.png'
-#detect_shapes_and_colors(image_path)
+    Args:
+        frame: A frame from a webcam.
+    
+    Returns:
+        frame: The processed frame with shape and color annotations.
+    """
+    hsv, gray = convert_to_hsv_and_gray(frame)
+    contours = find_contours(gray)
+
+    for cnt in contours:
+        shape = get_shape(cnt)
+        if shape:
+            mask = np.zeros_like(gray)
+            cv2.drawContours(mask, [cnt], -1, 255, -1)
+            color = get_color(hsv, mask)
+            x, y, w, h = cv2.boundingRect(cnt)
+            cv2.putText(frame, f'{color} {shape}', (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
+            cv2.drawContours(frame, [cnt], -1, (0, 255, 0), 2)
+    
+    return frame
