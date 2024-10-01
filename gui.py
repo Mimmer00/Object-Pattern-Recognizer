@@ -18,8 +18,6 @@ def load_image_from_file():
 
 # Function to display the webcam feed inside the Tkinter window
 def open_webcam():
-    # GUI pause
-    #app.withdraw()
     cap = cv2.VideoCapture(1)
     if not cap.isOpened():
         print("Error: Webcam could not be opened.")
@@ -40,9 +38,6 @@ def open_webcam():
             cap.release()
             break
         
-    
-    #app.deiconify()     
-
 
 # Create Tkinter window
 app = tk.Tk()
