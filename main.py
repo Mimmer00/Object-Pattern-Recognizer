@@ -92,17 +92,31 @@ def get_color(hsv_image, mask):
         return "Violet"
     return "Not found"
 
-def detect_shapes_and_colors(image_path):
+
+def load_image(image_path):
+    """
+    Load an image from a specified path.
+    
+    Args:
+        image_path (str): The path to the image file.
+    
+    Returns:
+        image: The loaded image in BGR format or None if loading fails.
+    """
+    image = cv2.imread(image_path)
+    if image is None:
+        print("Error: Image could not be loaded. Check the image path.")
+    return image
+
+
+def detect_shapes_and_colors(image):
     """
     Load an image, detect shapes and their colors, and display the result with annotations.
     
     Args:
         image_path (str): The path to the image file.
     """
-    image = load_image(image_path)
-    if image is None:
-        return
-
+   
     hsv, gray = convert_to_hsv_and_gray(image)
     contours = find_contours(gray)
 
@@ -115,10 +129,8 @@ def detect_shapes_and_colors(image_path):
             x, y, w, h = cv2.boundingRect(cnt)
             cv2.putText(image, f'{color} {shape}', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
             cv2.drawContours(image, [cnt], -1, (0, 255, 0), 2)
-    
-    plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-    plt.axis('off')
-    plt.show()
+      
+    return image
     
 #image_path = 'image_1.png'
 #detect_shapes_and_colors(image_path)
