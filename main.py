@@ -131,6 +131,3 @@ def detect_shapes_and_colors(image):
             cv2.drawContours(image, [cnt], -1, (0, 255, 0), 2)
       
     return image
-    
-#image_path = 'image_1.png'
-#detect_shapes_and_colors(image_path)
