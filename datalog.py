@@ -5,7 +5,7 @@ from datetime import datetime
 import os
 
    
-def write_log_to_csv(file_name, shape, color):
+def write_log_to_csv(shape, color):
     
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
@@ -13,7 +13,7 @@ def write_log_to_csv(file_name, shape, color):
     log_entry = [timestamp, shape, color]
 
     
-    with open(file_name, mode='a', newline='') as file:
+    with open("log.csv", mode='a', newline='') as file:
         writer = csv.writer(file)
         
         
@@ -23,5 +23,5 @@ def write_log_to_csv(file_name, shape, color):
         
         writer.writerow(log_entry)
 
-write_log_to_csv('log.csv', 'Circle', 'Red')
+
 

@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+from datalog import write_log_to_csv 
+
 def load_image(image_path):
     """
     Load an image from a specified path.
@@ -129,5 +131,6 @@ def detect_shapes_and_colors(image):
             x, y, w, h = cv2.boundingRect(cnt)
             cv2.putText(image, f'{color} {shape}', (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
             cv2.drawContours(image, [cnt], -1, (0, 255, 0), 2)
+            write_log_to_csv(shape, color)
       
     return image
