@@ -3,7 +3,7 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 import cv2
 import numpy as np
-from main import detect_shapes_and_colors_from_image, detect_shapes_and_colors_from_webcam
+from shape_detection import detect_shapes_and_colors_from_image, detect_shapes_and_colors_from_webcam
 
 app = tk.Tk()
 app.title("Shape and Color Detection")
@@ -15,7 +15,7 @@ splash_frame.pack(fill="both", expand=True)
 splash_text = tk.Label(splash_frame, text="Welcome to Shape and Color Detection", font=('Helvetica', 24))
 splash_text.pack(pady=50)
 
-splash_image = Image.open("image_0.png")
+splash_image = Image.open("image_1.png")
 splash_image = splash_image.resize((500, 400))  
 splash_image = ImageTk.PhotoImage(splash_image)
 
@@ -47,6 +47,7 @@ def stop_webcam():
     Stops the webcam feed by releasing the camera and clearing the webcam_label. 
     Also hides the "Zurück" button and re-displays the main buttons.
     """
+    global cap
     cap.release()
     webcam_label.configure(image='')
     button_frame.pack(side=tk.TOP, pady=50)
