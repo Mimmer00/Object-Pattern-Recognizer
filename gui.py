@@ -89,6 +89,7 @@ def open_webcam():
         """
         cap.release() 
         webcam_label.configure(image='')
+        splash_frame.pack(fill="both", expand=True) 
         button_frame.pack(side=tk.TOP, pady=50) 
         back_button.pack_forget() 
     
