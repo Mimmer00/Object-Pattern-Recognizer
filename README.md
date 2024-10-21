@@ -1,31 +1,77 @@
 # Object-Pattern-Recognizer
-SWENG Project Object Pattern Recognizer
-## Description
-This Python script uses OpenCV to detect geometric shapes (circles, squares, rectangles, and triangles) and their colors (red, green, blue, yellow, and violet) in images. It demonstrates the use of image processing techniques to classify and annotate objects based on their characteristics.
 
-- **Load Image from File**: Users can load an image from their computer, and the application will detect and annotate shapes (such as circles, rectangles, triangles) and their dominant colors (e.g., red, green, blue) on the image.
-- **Live Webcam Feed**: Users can access their webcam to detect shapes and colors in real-time. Detected shapes and colors are annotated directly on the webcam feed.
-- **Logging**: Detected shapes and colors are logged into a CSV file with a timestamp.
+SWENG Project Object Pattern Recognizer
+
+## Description
+
+Dieses Python-Projekt verwendet OpenCV, um geometrische Formen (Kreise, Quadrate, Rechtecke und Dreiecke) und deren Farben (Rot, Grün, Blau, Gelb und Violett) in Bildern zu erkennen. Es demonstriert die Verwendung von Bildverarbeitungstechniken zur Klassifizierung und Annotation von Objekten basierend auf ihren Merkmalen.
+
+### Hauptfunktionen
+
+- **Bild von Datei laden**: Benutzer können ein Bild von ihrem Computer laden. Das Programm erkennt und annotiert daraufhin Formen (wie Kreise, Rechtecke, Dreiecke) und deren dominante Farben (z. B. Rot, Grün, Blau) im Bild.
+- **Live-Webcam-Feed**: Benutzer können auf ihre Webcam zugreifen, um Formen und Farben in Echtzeit zu erkennen. Erkannte Formen und Farben werden direkt im Webcam-Feed annotiert.
+- **Protokollierung**: Alle erkannten Formen und Farben werden mit einem Zeitstempel in einer CSV-Datei protokolliert.
+
+### Änderungen basierend auf den aktuellen Python-Dateien
+
+- Die Funktion **`detect_shapes_and_colors_from_image`** in `shape_detection.py` analysiert Bilder, die vom Benutzer geladen wurden, und erkennt Formen und Farben.
+- Die Funktion **`detect_shapes_and_colors_from_webcam`** in `shape_detection.py` wird verwendet, um die Webcam-Bilder in Echtzeit zu analysieren und Formen sowie Farben zu erkennen.
+- Das Modul **`datalog.py`** verwendet die Funktion **`write_log_to_csv`**, um die erkannten Formen und Farben in der Datei `log.csv` zu protokollieren. Diese Protokolle enthalten den Zeitstempel, die erkannte Form und die Farbe.
 
 ## Prerequisites
+
+Stellen Sie sicher, dass die folgenden Bibliotheken installiert sind:
+
 - Python 3.x
-- OpenCV
+- OpenCV (`opencv-python`)
 - NumPy
-- Matplotlib
-- Tkinter
-- Pillow
+- Pillow (`Pillow`) – für die Bildverarbeitung in Tkinter
+- Tkinter (wird normalerweise mit Python geliefert)
+- Matplotlib – falls Diagramme benötigt werden
+
+Sie können diese Bibliotheken mit folgendem Befehl installieren:
+
+```bash
+pip install opencv-python numpy Pillow matplotlib
+```
 
 ## How to Use
 
-Click the "Load Image" button to open an image from your file system.
-The program will analyze the image, detect shapes and colors, and display the processed image with annotations.
+### Bild von Datei laden:
 
-Click the "Open Webcam" button to start the webcam feed.
-The program will detect shapes and colors in real-time and display them on the video feed.
-Press q to quit the webcam stream.
+1. Klicken Sie auf die Schaltfläche **"Load Image"**, um ein Bild von Ihrem Dateisystem zu öffnen.
+2. Das Programm analysiert das Bild, erkennt Formen und Farben, und zeigt das verarbeitete Bild mit Annotationen an.
+3. Die erkannten Formen und Farben werden in der Datei `log.csv` mit einem Zeitstempel protokolliert.
 
-Every time a shape and color are detected, the result is logged in a CSV file (log.csv) with a timestamp. The log file includes the following:
+### Webcam verwenden:
 
-Timestamp: The date and time when the detection occurred.
-Shape: The shape detected (e.g., Circle, Square, Triangle).
-Color: The dominant color detected (e.g., Red, Green, Blue).
+1. Klicken Sie auf **"Open Webcam"**, um den Webcam-Feed zu starten.
+2. Das Programm erkennt Formen und Farben in Echtzeit und zeigt sie direkt im Videostream an.
+3. Drücken Sie `q`, um den Webcam-Stream zu beenden.
+4. Die erkannten Formen und Farben werden ebenfalls in der Datei `log.csv` protokolliert.
+
+## Log-Datei
+
+Jedes Mal, wenn eine Form und eine Farbe erkannt werden, wird das Ergebnis in einer CSV-Datei (`log.csv`) mit einem Zeitstempel protokolliert. Die Protokolldatei enthält die folgenden Informationen:
+
+- **Timestamp**: Das Datum und die Uhrzeit, zu der die Erkennung stattgefunden hat.
+- **Shape**: Die erkannte Form (z. B. Kreis, Quadrat, Dreieck).
+- **Color**: Die erkannte dominante Farbe (z. B. Rot, Grün, Blau).
+
+Ein Beispiel für den Inhalt der `log.csv`-Datei:
+
+```csv
+Timestamp,Shape,Color
+2024-10-21 12:45:30,Circle,Red
+2024-10-21 12:45:35,Square,Blue
+```
+
+## Beispiel für erkannte Formen und Farben
+
+- **Formen**: Kreis, Quadrat, Rechteck, Dreieck
+- **Farben**: Rot, Grün, Blau, Gelb, Violett
+
+## Entwickler
+
+- Entwickelt von: Valerio Aemisegger, Marco Immer, Mauro Frehner
+- Version: 1.0
