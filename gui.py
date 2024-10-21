@@ -7,7 +7,21 @@ from main import detect_shapes_and_colors_from_image, detect_shapes_and_colors_f
 
 app = tk.Tk()
 app.title("Shape and Color Detection")
-app.geometry("1000x700")  
+app.attributes("-fullscreen", True)  
+
+splash_frame = tk.Frame(app)
+splash_frame.pack(fill="both", expand=True)
+
+splash_text = tk.Label(splash_frame, text="Welcome to Shape and Color Detection", font=('Helvetica', 24))
+splash_text.pack(pady=50)
+
+splash_image = Image.open("image_0.png")
+splash_image = splash_image.resize((500, 400))  
+splash_image = ImageTk.PhotoImage(splash_image)
+
+splash_label = tk.Label(splash_frame, image=splash_image)
+splash_label.image = splash_image  
+splash_label.pack(pady=20)
 
 webcam_label = tk.Label(app)
 webcam_label.pack(side=tk.TOP, padx=10, pady=10, expand=True)
@@ -43,6 +57,7 @@ def open_webcam():
     Opens the webcam and displays the feed in the GUI. Each frame is processed using the
     detect_shapes_and_colors_from_webcam function. The "Zurück" button is shown, allowing the user to stop the feed.
     """
+    splash_frame.pack_forget()
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Error: Webcam could not be opened.")
@@ -90,5 +105,9 @@ webcam_button.pack(side=tk.RIGHT, padx=20)
 
 back_button = tk.Button(app, text="Zurück", command=stop_webcam, 
                         width=20, height=2, font=('Helvetica', 14))
+
+exit_button = tk.Button(app, text="Exit", command=app.quit, 
+                        width=20, height=2, font=('Helvetica', 14))
+exit_button.pack(side=tk.BOTTOM, padx=40, pady=10)  
 
 app.mainloop()
