@@ -94,31 +94,17 @@ def get_color(hsv_image, mask):
         return "Violet"
     return "Not found"
 
-
-def load_image(image_path):
-    """
-    Load an image from a specified path.
-    
-    Args:
-        image_path (str): The path to the image file.
-    
-    Returns:
-        image: The loaded image in BGR format or None if loading fails.
-    """
-    image = cv2.imread(image_path)
-    if image is None:
-        print("Error: Image could not be loaded. Check the image path.")
-    return image
-
-
-def detect_shapes_and_colors(image):
+def detect_shapes_and_colors_from_image(image_path):
     """
     Load an image, detect shapes and their colors, and display the result with annotations.
     
     Args:
         image_path (str): The path to the image file.
     """
-   
+    image = load_image(image_path)
+    if image is None:
+        return
+
     hsv, gray = convert_to_hsv_and_gray(image)
     contours = find_contours(gray)
 
@@ -132,5 +118,33 @@ def detect_shapes_and_colors(image):
             cv2.putText(image, f'{color} {shape}', (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
             cv2.drawContours(image, [cnt], -1, (0, 255, 0), 2)
             write_log_to_csv(shape, color)
-      
-    return image
+    
+    plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+    plt.axis('off')
+    plt.show()
+
+def detect_shapes_and_colors_from_webcam(frame):
+    """
+    Detect shapes and their colors from a frame (e.g., webcam input).
+    
+    Args:
+        frame: A frame from a webcam.
+    
+    Returns:
+        frame: The processed frame with shape and color annotations.
+    """
+    hsv, gray = convert_to_hsv_and_gray(frame)
+    contours = find_contours(gray)
+
+    for cnt in contours:
+        shape = get_shape(cnt)
+        if shape:
+            mask = np.zeros_like(gray)
+            cv2.drawContours(mask, [cnt], -1, 255, -1)
+            color = get_color(hsv, mask)
+            x, y, w, h = cv2.boundingRect(cnt)
+            cv2.putText(frame, f'{color} {shape}', (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
+            cv2.drawContours(frame, [cnt], -1, (0, 255, 0), 2)
+            write_log_to_csv(shape, color)
+    
+    return frame
