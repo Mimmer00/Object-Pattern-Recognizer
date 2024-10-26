@@ -1,7 +1,9 @@
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
 import cv2
+import shutil
+import os
 import numpy as np
 from shape_detection import detect_shapes_and_colors_from_image, detect_shapes_and_colors_from_webcam
 
@@ -104,6 +106,26 @@ def open_webcam():
 webcam_button = tk.Button(button_frame, text="Open Webcam", command=lambda: [open_webcam(), button_frame.pack_forget()],
                           width=20, height=2, font=('Helvetica', 14))
 webcam_button.pack(side=tk.RIGHT, padx=20)
+
+def download_log():
+    """
+    Allows the user to select a save location for the log file.
+    Copies the log file to the chosen location.
+    """
+    log_file = "log.csv"  
+    if not os.path.exists(log_file):
+        messagebox.showinfo("Info", "No log file found.")
+        return
+    
+    save_path = filedialog.asksaveasfilename(defaultextension=".txt", 
+                                             filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+    if save_path:
+        shutil.copy(log_file, save_path)
+        messagebox.showinfo("Success", f"Log file saved as {save_path}")
+
+download_button = tk.Button(button_frame, text="Download Log", command=download_log,
+                            width=20, height=2, font=('Helvetica', 14))
+download_button.pack(side=tk.LEFT, padx=20)
 
 back_button = tk.Button(app, text="Zurück", command=stop_webcam, 
                         width=20, height=2, font=('Helvetica', 14))
