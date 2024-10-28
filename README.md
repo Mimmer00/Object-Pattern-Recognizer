@@ -1,35 +1,36 @@
-# Object-Pattern-Recognizer
+
+# Object Pattern Recognizer
 
 SWENG Project Object Pattern Recognizer
 
 ## Description
 
-Dieses Python-Projekt verwendet OpenCV, um geometrische Formen (Kreise, Quadrate, Rechtecke und Dreiecke) und deren Farben (Rot, Grün, Blau, Gelb und Violett) in Bildern zu erkennen. Es demonstriert die Verwendung von Bildverarbeitungstechniken zur Klassifizierung und Annotation von Objekten basierend auf ihren Merkmalen.
+This Python project uses OpenCV to detect geometric shapes (circles, squares, rectangles, and triangles) and their colors (red, green, blue, yellow, and violet) in images. It demonstrates the use of image processing techniques to classify and annotate objects based on their features.
 
-### Hauptfunktionen
+### Main Features
 
-- **Bild von Datei laden**: Benutzer können ein Bild von ihrem Computer laden. Das Programm erkennt und annotiert daraufhin Formen (wie Kreise, Rechtecke, Dreiecke) und deren dominante Farben (z. B. Rot, Grün, Blau) im Bild.
-- **Live-Webcam-Feed**: Benutzer können auf ihre Webcam zugreifen, um Formen und Farben in Echtzeit zu erkennen. Erkannte Formen und Farben werden direkt im Webcam-Feed annotiert.
-- **Protokollierung**: Alle erkannten Formen und Farben werden mit einem Zeitstempel in einer CSV-Datei protokolliert.
+- **Load Image from File**: Users can load an image from their computer. The program detects and annotates shapes (such as circles, rectangles, and triangles) and their dominant colors (e.g., red, green, blue) in the image.
+- **Live Webcam Feed**: Users can access their webcam to detect shapes and colors in real time. Detected shapes and colors are annotated directly in the webcam feed.
+- **Logging**: All detected shapes and colors are logged with a timestamp in a CSV file.
 
-### Änderungen basierend auf den aktuellen Python-Dateien
+### Updates Based on Current Python Files
 
-- Die Funktion **`detect_shapes_and_colors_from_image`** in `shape_detection.py` analysiert Bilder, die vom Benutzer geladen wurden, und erkennt Formen und Farben.
-- Die Funktion **`detect_shapes_and_colors_from_webcam`** in `shape_detection.py` wird verwendet, um die Webcam-Bilder in Echtzeit zu analysieren und Formen sowie Farben zu erkennen.
-- Das Modul **`datalog.py`** verwendet die Funktion **`write_log_to_csv`**, um die erkannten Formen und Farben in der Datei `log.csv` zu protokollieren. Diese Protokolle enthalten den Zeitstempel, die erkannte Form und die Farbe.
+- The function **`detect_shapes_and_colors_from_image`** in `shape_detection.py` analyzes images loaded by the user and detects shapes and colors.
+- The function **`detect_shapes_and_colors_from_webcam`** in `shape_detection.py` is used to analyze webcam images in real time to detect shapes and colors.
+- The **`datalog.py`** module uses the **`write_log_to_csv`** function to log detected shapes and colors in the `log.csv` file. These logs include the timestamp, recognized shape, and color.
 
 ## Prerequisites
 
-Stellen Sie sicher, dass die folgenden Bibliotheken installiert sind:
+Ensure that the following libraries are installed:
 
 - Python 3.x
 - OpenCV (`opencv-python`)
 - NumPy
-- Pillow (`Pillow`) – für die Bildverarbeitung in Tkinter
-- Tkinter (wird normalerweise mit Python geliefert)
-- Matplotlib – falls Diagramme benötigt werden
+- Pillow (`Pillow`) – for image processing in Tkinter
+- Tkinter (typically included with Python)
+- Matplotlib – if charts are needed
 
-Sie können diese Bibliotheken mit folgendem Befehl installieren:
+You can install these libraries with the following command:
 
 ```bash
 pip install opencv-python numpy Pillow matplotlib
@@ -37,28 +38,28 @@ pip install opencv-python numpy Pillow matplotlib
 
 ## How to Use
 
-### Bild von Datei laden:
+### Load Image from File:
 
-1. Klicken Sie auf die Schaltfläche **"Load Image"**, um ein Bild von Ihrem Dateisystem zu öffnen.
-2. Das Programm analysiert das Bild, erkennt Formen und Farben, und zeigt das verarbeitete Bild mit Annotationen an.
-3. Die erkannten Formen und Farben werden in der Datei `log.csv` mit einem Zeitstempel protokolliert.
+1. Click the **"Load Image"** button to open an image from your file system.
+2. The program analyzes the image, detects shapes and colors, and displays the processed image with annotations.
+3. The detected shapes and colors are logged in the `log.csv` file with a timestamp.
 
-### Webcam verwenden:
+### Use Webcam:
 
-1. Klicken Sie auf **"Open Webcam"**, um den Webcam-Feed zu starten.
-2. Das Programm erkennt Formen und Farben in Echtzeit und zeigt sie direkt im Videostream an.
-3. Drücken Sie `q`, um den Webcam-Stream zu beenden.
-4. Die erkannten Formen und Farben werden ebenfalls in der Datei `log.csv` protokolliert.
+1. Click **"Open Webcam"** to start the webcam feed.
+2. The program detects shapes and colors in real time and displays them directly in the video stream.
+3. Press `q` to stop the webcam stream.
+4. The detected shapes and colors are also logged in the `log.csv` file.
 
-## Log-Datei
+## Log File
 
-Jedes Mal, wenn eine Form und eine Farbe erkannt werden, wird das Ergebnis in einer CSV-Datei (`log.csv`) mit einem Zeitstempel protokolliert. Die Protokolldatei enthält die folgenden Informationen:
+Each time a shape and color are detected, the result is recorded in a CSV file (`log.csv`) with a timestamp. The log file contains the following information:
 
-- **Timestamp**: Das Datum und die Uhrzeit, zu der die Erkennung stattgefunden hat.
-- **Shape**: Die erkannte Form (z. B. Kreis, Quadrat, Dreieck).
-- **Color**: Die erkannte dominante Farbe (z. B. Rot, Grün, Blau).
+- **Timestamp**: The date and time when the recognition occurred.
+- **Shape**: The recognized shape (e.g., circle, square, triangle).
+- **Color**: The recognized dominant color (e.g., red, green, blue).
 
-Ein Beispiel für den Inhalt der `log.csv`-Datei:
+An example of the contents of the `log.csv` file:
 
 ```csv
 Timestamp,Shape,Color
@@ -66,12 +67,12 @@ Timestamp,Shape,Color
 2024-10-21 12:45:35,Square,Blue
 ```
 
-## Beispiel für erkannte Formen und Farben
+## Examples of Recognized Shapes and Colors
 
-- **Formen**: Kreis, Quadrat, Rechteck, Dreieck
-- **Farben**: Rot, Grün, Blau, Gelb, Violett
+- **Shapes**: Circle, Square, Rectangle, Triangle
+- **Colors**: Red, Green, Blue, Yellow, Violet
 
-## Entwickler
+## Developers
 
-- Entwickelt von: Valerio Aemisegger, Marco Immer, Mauro Frehner
+- Developed by: Valerio Aemisegger, Marco Immer, Mauro Frehner
 - Version: 1.0
