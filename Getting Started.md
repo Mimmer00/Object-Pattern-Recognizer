@@ -79,6 +79,7 @@ This file is useful for tracking detections over time, and it includes:
 - **Shape**: Recognized shape (e.g., Circle, Square, etc.).
 - **Color**: Dominant detected color.
 
+The Log file can be downloaded as a CSV file with the "Download Log" button.
 ---
 
 ### Developer Information

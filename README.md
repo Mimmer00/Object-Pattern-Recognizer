@@ -11,7 +11,7 @@ This Python project uses OpenCV to detect geometric shapes (circles, squares, re
 
 - **Load Image from File**: Users can load an image from their computer. The program detects and annotates shapes (such as circles, rectangles, and triangles) and their dominant colors (e.g., red, green, blue) in the image.
 - **Live Webcam Feed**: Users can access their webcam to detect shapes and colors in real time. Detected shapes and colors are annotated directly in the webcam feed.
-- **Logging**: All detected shapes and colors are logged with a timestamp in a CSV file.
+- **Logging**: All detected shapes and colors are logged with a timestamp in a CSV file, which can be also downloaded with the "Download Log" button.
 
 ### Updates Based on Current Python Files
 
@@ -66,6 +66,7 @@ Timestamp,Shape,Color
 2024-10-21 12:45:30,Circle,Red
 2024-10-21 12:45:35,Square,Blue
 ```
+The Log file can be downloaded as a CSV file with the "Download Log" button.
 
 ## Examples of Recognized Shapes and Colors
 
