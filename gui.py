@@ -117,8 +117,8 @@ def download_log():
         messagebox.showinfo("Info", "No log file found.")
         return
     
-    save_path = filedialog.asksaveasfilename(defaultextension=".txt", 
-                                             filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+    save_path = filedialog.asksaveasfilename(defaultextension=".csv", 
+                                         filetypes=[("CSV Files", "*.csv"), ("All Files", "*.*")])
     if save_path:
         shutil.copy(log_file, save_path)
         messagebox.showinfo("Success", f"Log file saved as {save_path}")
